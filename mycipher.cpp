@@ -7,16 +7,18 @@ string caesarCipher(string& message, int shift) {
 	string encrypted = "";
 	int letterCount = 0;
 	shift = shift % 26;
-
+	
 	for (char c : message) {
-		char encryptedChar = ((toupper(c) - 'A' + shift) % 26) + 'A';
-		encrypted += encryptedChar;
-		letterCount++;
+		if (isalpha(c)){
+			char encryptedChar = ((toupper(c) - 'A' + shift) % 26) + 'A';
+			encrypted += encryptedChar;
+			letterCount++;
 
-		if (letterCount % 5 == 0) encrypted += ' ';
-		if (letterCount % 50 == 0) encrypted += '\n';
+			if (letterCount % 5 == 0) encrypted += ' ';
+			if (letterCount % 50 == 0) encrypted += '\n';
+	
+		}
 	}
-
 	return encrypted;
 }
 
